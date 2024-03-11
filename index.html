@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/a68c8d50e2.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div class="calc">
+        <div class="head"> 
+        <div class="sign">
+            <img src="icons8-calculator-48.png" alt="">
+        <p>Calculator </p>
+        </div>
+        <div class="two">
+        <button><i class="fa-solid fa-minus"></i></button>
+        <button><i class="fa-regular fa-square"></i></button>
+        <button><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+    <br>
+    <div class="stan">
+        <h1><i class="fa-solid fa-bars"></i> Standard <img src="icons8-maximize-49.png" alt=""></h1>
+        <div class="time">
+        <img src="icons8-time-50.png" alt="">
+        </div>
+    </div>
+    <div class="second">
+        <input type="text" id="input2">
+    </div>
+    <div class="show">
+    <input type="text" id="input">
+    </div>
+
+<div class="all">
+    <div class="ms">
+        <button>MC</button>
+        <button>MR</button>
+        <button>M+</button>
+        <button>M-</button>
+        <button>MS</button>
+        <button>M</button>
+    </div>
+<div class="sub">
+    <button onclick="button('%')">%</button>
+    <button onclick="cancel()">CE</button>
+    <button onclick="cancel()">C</button>
+    <button onclick="erase()">Cancel</button>
+</div>
+<div class="power">
+    <button onclick="">1/X</button>
+    <button >x <sup>2</sup></button>
+    <button ><sup>2</sup> &#8730 x</button>
+    <button onclick="butto('/')">&#247</button>
+</div>
+<div class="multi">
+    <button onclick="button(7)">7</button>
+    <button onclick="button(8)">8</button>
+    <button onclick="button(9)">9</button>
+    <button onclick="butto('*')">&times</button>
+</div>
+<div class="no">
+    <button onclick="button(4)">4</button>
+    <button onclick="button(5)">5</button>
+    <button onclick="button(6)">6</button>
+    <button onclick="butto('-')">-</button>
+</div>
+<div class="plus">
+    <button onclick="button(1)">1</button>
+    <button onclick="button(2)">2</button>
+    <button onclick="button(3)">3</button>
+    <button onclick="butto('+')">+</button>
+</div>
+<div class="equal">
+    <button >+/-</button>
+    <button onclick="button(0)">0</button>
+    <button onclick="button('.')">.</button>
+    <span><button onclick="equal()">=</button></span>
+</div>
+</div>
+
+
+
+
+
+    </div>
+</body>
+</html>
+<script>
+    let big_d = document.getElementById('input')
+    let small_d=document.getElementById('input2')
+    clear=false
+    operator=''
+    function button(number){
+        if (clear==true) {
+            big_d.value=''
+            clear=false
+        }
+        big_d.value+=(number)
+    }
+    function butto(signs) {
+        small_d.value=big_d.value + signs
+        clear=true
+        operator=signs
+        kept_value=big_d.value
+    }
+    function equal(){
+        small_d.value=kept_value + operator + big_d.value
+        if (operator=='-') {
+            big_d.value=kept_value - big_d.value
+            console.log(big_d.value);
+        }
+        if (operator=='+'){
+            big_d.value=Number(kept_value)+parseInt(big_d.value)
+        }
+        if (operator=='*'){
+            big_d.value=kept_value*big_d.value
+        }
+       if (operator=='/'){
+        big_d.value=kept_value/big_d.value
+       }
+    }
+    
+
+    function erase(){
+        let cutoff=big_d.value
+        big_d.value=cutoff.slice(0,-1)    
+    }
+    function cancel(){
+        big_d.value=''
+        small_d.value=''
+    }
+    //var, let, const
+</script> 
